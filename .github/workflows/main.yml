@@ -25,9 +25,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Geode CLI
+      - name: Setup Geode
         uses: geode-sdk/action@main
         with:
+          sdk: v5.5.3
           bindings-ref: main
 
       - name: Configure CMake
