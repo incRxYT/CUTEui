@@ -31,11 +31,12 @@ jobs:
           sdk: v5.5.3
           bindings-ref: main
 
-      - name: Configure CMake
-        run: >
-          cmake -S . -B build
-          -DCMAKE_BUILD_TYPE=Release
-          -A Win32
+   - name: Configure CMake
+  run: >
+    cmake -S . -B build
+    -DCMAKE_BUILD_TYPE=Release
+    -A Win32
+    -DGEODE_SDK=$env:GEODE_SDK
 
       - name: Build
         run: cmake --build build --config Release --parallel
