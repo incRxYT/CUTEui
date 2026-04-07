@@ -10,15 +10,15 @@ if (NOT DEFINED ENV{GEODE_SDK})
 endif()
 
 set(GEODE_SDK $ENV{GEODE_SDK})
-
 add_subdirectory(${GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
-    src/ProgressBarHook.cpp
-    src/TrailHook.cpp
-    src/PercentageHook.cpp
+    CUTEui/Main.cpp
+    CUTEui/ProgressBarHook.cpp
+    CUTEui/TrailHook.cpp
+    CUTEui/PercentageHook.cpp
 )
 
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "incRX.cuteui")
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})
