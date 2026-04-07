@@ -9,8 +9,7 @@ if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK.")
 endif()
 
-set(GEODE_SDK $ENV{GEODE_SDK})
-add_subdirectory(${GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 add_library(${PROJECT_NAME} SHARED
     CUTEui/Main.cpp
