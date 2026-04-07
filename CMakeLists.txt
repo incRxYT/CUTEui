@@ -5,18 +5,20 @@ set(CMAKE_OSX_ARCHITECTURES "x86_64")
 
 project(CUTEui VERSION 1.0.0)
 
-add_library(${PROJECT_NAME} SHARED
-    CUTEui/Main.cpp
-    CUTEui/ProgressBarHook.cpp
-    CUTEui/TrailHook.cpp
-    CUTEui/PercentageHook.cpp
-)
-
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK.")
 endif()
 
-add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+set(GEODE_SDK $ENV{GEODE_SDK})
+
+add_subdirectory(${GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+
+add_library(${PROJECT_NAME} SHARED
+    src/main.cpp
+    src/ProgressBarHook.cpp
+    src/TrailHook.cpp
+    src/PercentageHook.cpp
+)
 
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})
